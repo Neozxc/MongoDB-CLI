@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Neozxc/MongoDB-CLI#readme",
   "dependencies": {
     "dotenv": "^15.0.0",
-    "mongodb": "^4.3.1"
+    "mongodb": "^4.3.1",
+    "yargs": "^17.3.1"
   }
 }
