@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Neozxc/MongoDB-CLI#readme",
   "dependencies": {
+    "dotenv": "^15.0.0",
     "mongodb": "^4.3.1"
   }
 }
