@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Neozxc/MongoDB-CLI/issues"
   },
-  "homepage": "https://github.com/Neozxc/MongoDB-CLI#readme"
+  "homepage": "https://github.com/Neozxc/MongoDB-CLI#readme",
+  "dependencies": {
+    "mongodb": "^4.3.1"
+  }
 }
