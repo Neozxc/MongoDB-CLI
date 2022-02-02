@@ -45,6 +45,22 @@ const app = async (yargsObj) => {
 
         // Log
         console.log(`${result.modifiedCount}`);
+    } else if (yargsObj.delete) {
+        const database = client.db("Movies");
+        const collection = database.collection("Movie");
+
+        // We will try to delete Clean.
+        const tryThisEy = { title: "Clean" };
+
+        // We use deleteOne() method.
+        const result = await collection.deleteOne(tryThisEy);
+
+        // If there is found with that name we delete it.
+        if (result.deletedCount === 1) {
+            console.log("Nice!");
+        } else {
+            console.log("No documents found!")
+        }
     }
     client.close();
     } catch (error) {
