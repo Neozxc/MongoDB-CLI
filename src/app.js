@@ -10,10 +10,29 @@ const app = async (yargsObj) => {
             title: yargsObj.title,
             actor: yargsObj.actor
         });
-        // add movie to the mongodb database,
-        // needs collection and success message.
-    } else {
-        console.log("Incorrect command.");
+    } else if (yargsObj.update) {
+        // First we tell MongoDB to find our Collection named Movies.
+        // If there is none it will create it for us.
+        const database = client.db("Movies");
+
+        // Then we tell MongoDB hey i have child in there, access it!
+        // Also if there is none MongoDB will create it for us.
+        const collection = database.collection("Movie")
+        
+        // We use $set and tell MongoDB to HEY change this and this to this and this.
+        const updateDoc = {
+            $set: {
+                title: "Clean",
+                actor: "Lyo"
+            }
+        }
+
+        // We want to match it on all documents so we leave blank obj.
+        // [Empty filter matches all docs.]
+        const result = await collection.updateOne({}, updateDoc, {})
+
+        // Log
+        console.log(`${result.modifiedCount}`);
     }
     client.close();
     } catch (error) {
