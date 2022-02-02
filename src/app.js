@@ -10,13 +10,25 @@ const app = async (yargsObj) => {
             title: yargsObj.title,
             actor: yargsObj.actor
         });
-    } else if (yargsObj.update) {
+    } else if (yargsObj.read) {
         // First we tell MongoDB to find our Collection named Movies.
         // If there is none it will create it for us.
         const database = client.db("Movies");
 
         // Then we tell MongoDB hey i have child in there, access it!
         // Also if there is none MongoDB will create it for us.
+        const collection = database.collection("Movie");
+
+        // We'll try to find this.
+        const findIt = { title: "Clean", actor: "Lyo" };
+
+        // Use findOne() method.
+        const didWeFindIt = await collection.findOne(findIt);
+
+        // Since this method returns the matched document, not a cursor, print it directly.
+        console.log(didWeFindIt);
+    } else if (yargsObj.update) {
+        const database = client.db("Movies");
         const collection = database.collection("Movie")
         
         // We use $set and tell MongoDB to HEY change this and this to this and this.
